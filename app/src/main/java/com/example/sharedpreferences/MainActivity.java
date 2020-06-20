@@ -19,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText;
     private Button button;
 
-    //Deklarasi dan Inisialisasi SharedPreferences
-    private SharedPreferences preferences;
+    //Deklarasi dan Inisialisasi class sharedPrefManager
+    private SharedPrefManager sharedPrefManager;
 
     //Digunakan Untuk Konfigurasi SharedPreferences
     private SharedPreferences.Editor editor;
+
+    //inisialisai newJavaClass
+    private NewJavaClass newJavaClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,14 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.tvOutput);
         button = findViewById(R.id.btSave);
 
-        //Membuat File Baru Beserta Modifiernya
-        preferences = getSharedPreferences("Belajar_SharedPreferences", Context.MODE_PRIVATE);
+        //membuat object class SharedPrefManager
+        sharedPrefManager = new SharedPrefManager(this);
+
+        //membuat object class NewJavaClass
+        newJavaClass = new NewJavaClass(this);
+
+        //get String before
+        textView.setText(newJavaClass.getNama());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,18 +58,10 @@ public class MainActivity extends AppCompatActivity {
         //Mendapatkan Input dari user
         String getKonten = editText.getText().toString();
 
-        //Digunakan Untuk Pengaturan Konfigurasi SharedPreferences
-        editor = preferences.edit();
-
-        //Memasukan Data Pada Editor SharedPreferences dengan key (data_saya)
-        editor.putString("data_saya", getKonten);
-
-        //Menjalankan Operasi
-        editor.apply();
-
-        //Menampilkan Output
-
-        textView.setText("Output Data : "+preferences.getString("data_saya", null));
+        //save value
+        newJavaClass.saveNama(getKonten);
+        //get Value
+        textView.setText(getKonten);
     }
 
 }
