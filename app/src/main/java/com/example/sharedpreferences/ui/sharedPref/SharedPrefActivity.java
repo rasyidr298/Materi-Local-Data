@@ -1,9 +1,7 @@
-package com.example.sharedpreferences;
+package com.example.sharedpreferences.ui.sharedPref;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.sharedpreferences.R;
+import com.example.sharedpreferences.data.sharedPref.SharedPrefManager;
 
-    //Deklarasi Variable Pendukung
+public class SharedPrefActivity extends AppCompatActivity {
+
     private TextView textView;
     private EditText editText;
     private Button button;
@@ -25,25 +25,18 @@ public class MainActivity extends AppCompatActivity {
     //Digunakan Untuk Konfigurasi SharedPreferences
     private SharedPreferences.Editor editor;
 
-    //inisialisai newJavaClass
-    private NewJavaClass newJavaClass;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        editText = findViewById(R.id.eTinput);
-        textView = findViewById(R.id.tvOutput);
-        button = findViewById(R.id.btSave);
+        setContentView(R.layout.activity_shared_pref);
+         editText = findViewById(R.id.eTinput);
+         textView = findViewById(R.id.tvOutput);
+         button = findViewById(R.id.btSave);
 
         //membuat object class SharedPrefManager
         sharedPrefManager = new SharedPrefManager(this);
 
-        //membuat object class NewJavaClass
-        newJavaClass = new NewJavaClass(this);
-
-        //get String before
-        textView.setText(newJavaClass.getNama());
+        textView.setText(sharedPrefManager.getString());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +50,9 @@ public class MainActivity extends AppCompatActivity {
     private void getData(){
         //Mendapatkan Input dari user
         String getKonten = editText.getText().toString();
+        sharedPrefManager.saveString(getKonten);
 
-        //save value
-        newJavaClass.saveNama(getKonten);
-        //get Value
-        textView.setText(getKonten);
+        //menampilkan data
+        textView.setText(sharedPrefManager.getString());
     }
-
 }

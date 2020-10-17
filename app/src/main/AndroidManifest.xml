@@ -3,13 +3,18 @@
     package="com.example.sharedpreferences">
 
     <application
+        android:name=".data.db.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.roomData.ViewRoomDataActivity"></activity>
+        <activity android:name=".ui.roomData.AddRoomDataActivity" />
+        <activity android:name=".ui.roomData.RoomDataActivity" />
+        <activity android:name=".ui.sharedPref.SharedPrefActivity" />
+        <activity android:name=".ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
