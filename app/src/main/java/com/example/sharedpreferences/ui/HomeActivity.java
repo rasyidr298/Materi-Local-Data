@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sharedpreferences.R;
+import com.example.sharedpreferences.ui.auth.LoginActivity;
 import com.example.sharedpreferences.ui.roomData.RoomDataActivity;
 import com.example.sharedpreferences.ui.sharedPref.SharedPrefActivity;
 
@@ -20,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Button btnToShared =  findViewById(R.id.btnToSharedPref);
         Button btnToRoom =  findViewById(R.id.btnToRoomData);
+        Button btnLogin =  findViewById(R.id.btnLogin);
 
 
         btnToShared.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +36,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomeActivity.this, RoomDataActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });

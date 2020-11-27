@@ -10,11 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.roomData.ViewRoomDataActivity"></activity>
+        <activity android:name=".ui.HomeActivity"/>
+        <activity android:name=".ui.profile.ProfileActivity" />
+        <activity android:name=".ui.auth.LoginActivity" />
+        <activity android:name=".ui.roomData.ViewRoomDataActivity" />
         <activity android:name=".ui.roomData.AddRoomDataActivity" />
         <activity android:name=".ui.roomData.RoomDataActivity" />
         <activity android:name=".ui.sharedPref.SharedPrefActivity" />
-        <activity android:name=".ui.HomeActivity">
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

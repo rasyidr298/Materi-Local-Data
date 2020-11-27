@@ -21,4 +21,22 @@ public class SharedPrefManager {
         return sharedPreferences.getString("ini_string", "");
     }
 
+    public String getUsername(){
+        return sharedPreferences.getString("sp_username", "rasyid298");
+    }
+
+    public String getPassword(){
+        return sharedPreferences.getString("sp_password", "123456");
+    }
+
+    public void saveIsLogin(Boolean value){
+        editor.putBoolean("sp_islogin",value);
+        editor.commit();
+    }
+
+
+    public Boolean getIsLogin(){
+        return sharedPreferences.getBoolean("sp_islogin", false);
+    }
+
 }
