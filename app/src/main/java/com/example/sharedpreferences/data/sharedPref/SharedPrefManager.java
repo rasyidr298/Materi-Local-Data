@@ -34,7 +34,6 @@ public class SharedPrefManager {
         editor.commit();
     }
 
-
     public Boolean getIsLogin(){
         return sharedPreferences.getBoolean("sp_islogin", false);
     }
